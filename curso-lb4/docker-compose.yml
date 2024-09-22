@@ -28,5 +28,5 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: app-curso-root
       ME_CONFIG_MONGODB_ADMINPASSWORD: app-curso-senhamongo
-      ME_CONFIG_MONGODB_URL: mongodb://app-curso-root:app-curso-senha@:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://app-curso-root:app-curso-senha@mongo:27017/
       ME_CONFIG_BASICAUTH: false
