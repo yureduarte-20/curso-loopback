@@ -45,7 +45,7 @@ export class CustomerController {
     })
     customer: Omit<Customer, 'id'>,
   ): Promise<Customer> {
-    let exists = await this.customerRepository.findOne({where: {email: customer.email}})
+    const exists = await this.customerRepository.findOne({where: {email: customer.email}})
     if (exists) {
       throw new HttpErrors.UnprocessableEntity("Cliente já cadastrado");
     }

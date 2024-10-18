@@ -1,15 +1,17 @@
+import {AuthenticationComponent} from '@loopback/authentication';
+import {JWTAuthenticationComponent, UserServiceBindings} from '@loopback/authentication-jwt';
 import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
+import {RepositoryMixin} from '@loopback/repository';
+import {RestApplication} from '@loopback/rest';
 import {
   RestExplorerBindings,
   RestExplorerComponent,
 } from '@loopback/rest-explorer';
-import {RepositoryMixin} from '@loopback/repository';
-import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
+import {MongoDbSourceDataSource} from './datasources';
 import {MySequence} from './sequence';
-
 export {ApplicationConfig};
 
 export class CursoLb4Application extends BootMixin(
@@ -29,6 +31,9 @@ export class CursoLb4Application extends BootMixin(
       path: '/explorer',
     });
     this.component(RestExplorerComponent);
+    this.component(AuthenticationComponent);
+    this.component(JWTAuthenticationComponent)
+    this.dataSource(MongoDbSourceDataSource, UserServiceBindings.DATASOURCE_NAME)
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here
