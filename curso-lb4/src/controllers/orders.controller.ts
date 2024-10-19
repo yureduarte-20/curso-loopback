@@ -19,13 +19,15 @@ import {
 } from '@loopback/rest';
 import {Order} from '../models';
 import {OrderRepository} from '../repositories';
+import { authenticate } from '@loopback/authentication';
 
+@authenticate("jwt")
 export class OrdersController {
   constructor(
     @repository(OrderRepository)
     public orderRepository : OrderRepository,
   ) {}
-
+ 
   @post('/orders')
   @response(200, {
     description: 'Order model instance',

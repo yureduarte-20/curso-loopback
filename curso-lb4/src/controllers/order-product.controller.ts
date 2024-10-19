@@ -11,7 +11,8 @@ import {
   Product,
 } from '../models';
 import {OrderRepository} from '../repositories';
-
+import { authenticate } from '@loopback/authentication';
+@authenticate("jwt")
 export class OrderProductController {
   constructor(
     @repository(OrderRepository)

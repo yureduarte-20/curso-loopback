@@ -20,7 +20,8 @@ import {
   Order,
 } from '../models';
 import {ProductRepository} from '../repositories';
-
+import { authenticate } from '@loopback/authentication';
+@authenticate("jwt")
 export class ProductOrderController {
   constructor(
     @repository(ProductRepository) protected productRepository: ProductRepository,
