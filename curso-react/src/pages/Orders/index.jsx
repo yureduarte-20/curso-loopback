@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import api from "../../service/api"
 import { Link } from 'react-router-dom'
+import { useApi } from "../../service/api"
 
 export default function Orders() {
     const [orders, setOrders] = useState([])
-
+    const api = useApi()
     async function fetchOrders() {
         const response = await api.get(`/orders?filter=${JSON.stringify({ include:['customer', 'product'] })}`)
         setOrders(response.data)

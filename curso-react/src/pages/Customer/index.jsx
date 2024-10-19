@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import api from "../../service/api"
 import { isAxiosError } from 'axios'
 import { Link } from "react-router-dom"
+import { useApi } from "../../service/api"
 
 export default function Customer() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
-
+    const api = useApi()
     const [customers, setCustomers] = useState([])
 
     async function createCustomer() {

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import api from '../../service/api'
+import { useApi } from '../../service/api'
 
 export default function CustomerEdit() {
     const { id } = useParams()
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
-
+    const api = useApi() 
     async function fetchCustomer() {
         const response = await api.get('customers/' + id)
         const { email, name } = response.data;
